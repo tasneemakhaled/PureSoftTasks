@@ -49,6 +49,15 @@ class SignUpView extends StatelessWidget {
             SizedBox(
               width: 300,
               child: CustomButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SignUpView();
+                      },
+                    ),
+                  );
+                },
                 text: 'Sign UP',
                 buttonColor: pColor,
                 color: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/authentication/presentation/views/sign_up_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 
 class WelcomeView extends StatelessWidget {
@@ -33,7 +34,15 @@ class WelcomeView extends StatelessWidget {
               width: 300,
               child: CustomButton(
                 prefixIcon: Icon(Icons.phone, color: Colors.black),
-
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SignUpView();
+                      },
+                    ),
+                  );
+                },
                 text: 'Sign in With Phone Number',
                 color: Colors.black,
               ),
@@ -41,6 +50,15 @@ class WelcomeView extends StatelessWidget {
             SizedBox(
               width: 300,
               child: CustomButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SignUpView();
+                      },
+                    ),
+                  );
+                },
                 prefixIcon: Icon(FontAwesomeIcons.google, color: Colors.black),
                 text: 'Sign In With Google',
                 color: Colors.black,
@@ -49,6 +67,15 @@ class WelcomeView extends StatelessWidget {
             SizedBox(
               width: 300,
               child: CustomButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SignUpView();
+                      },
+                    ),
+                  );
+                },
                 buttonColor: Color(0xff235C95),
                 prefixIcon: Icon(
                   FontAwesomeIcons.facebook,

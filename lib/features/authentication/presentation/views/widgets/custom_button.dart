@@ -4,7 +4,7 @@ import 'package:fruit_app/features/authentication/presentation/views/sign_up_vie
 class CustomButton extends StatelessWidget {
   CustomButton({
     super.key,
-     this.prefixIcon,
+    this.prefixIcon,
     required this.text,
     this.color,
     this.onPressed,
@@ -19,15 +19,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(backgroundColor: buttonColor),
-      onPressed: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return SignUpView();
-            },
-          ),
-        );
-      },
+      onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

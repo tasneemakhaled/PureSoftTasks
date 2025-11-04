@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/authentication/presentation/views/forget_password_first_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
 
@@ -42,7 +43,16 @@ class LoginView extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ForgetPasswordFirstView();
+                      },
+                    ),
+                  );
+                  ;
+                },
                 child: Text(
                   'Forget password ?',
                   style: TextStyle(decoration: TextDecoration.underline),
