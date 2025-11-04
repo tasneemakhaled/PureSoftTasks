@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/authentication/presentation/views/welcome_view.dart';
 import 'package:fruit_app/features/onboarding/presentation/view_models/onboarding_model.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -76,7 +77,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                               height: 8,
                               decoration: BoxDecoration(
                                 color: onChangedIndex == index
-                                    ? Colors.teal
+                                    ? pColor
                                     : Colors.grey,
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -94,10 +95,19 @@ class _OnboardingViewState extends State<OnboardingView> {
                               duration: Duration(microseconds: 2),
                               curve: Curves.bounceInOut,
                             );
+                          } else {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return WelcomeView();
+                                },
+                              ),
+                            );
                           }
                         },
                         child: Text(
-                          'Next',
+                          onChangedIndex <= 1 ? 'Next' : 'Get Started',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
