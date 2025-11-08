@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/SellerStore/presentation/views/seller_store.dart';
+import 'package:fruit_app/features/basket/presentation/views/basket_view.dart';
+import 'package:fruit_app/features/favourite/presentation/views/favourite_view.dart';
 import 'package:fruit_app/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:fruit_app/features/home/presentation/views/widgets/custom_seller.dart';
+import 'package:fruit_app/features/home/presentation/views/widgets/home_body.dart';
+import 'package:fruit_app/features/orders/presentation/views/orders_view.dart';
 import 'package:fruit_app/features/search/presentation/views/search_view.dart';
+import 'package:fruit_app/features/setting/presentation/views/setting_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  HomeView({super.key});
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
+     
       appBar: AppBar(
         actions: [
           IconButton(
@@ -37,47 +42,7 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Image.asset('assets/images/firstPhoto.png'),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset('assets/images/resturants.png'),
-                Image.asset('assets/images/farms.png'),
-                Image.asset('assets/images/coffee.png'),
-                Image.asset('assets/images/pharmasy.png'),
-              ],
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Sellers', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('Show All', style: TextStyle(color: Colors.blue)),
-              ],
-            ),
-
-            InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SellerStore();
-                    },
-                  ),
-                );
-              },
-              child: CustomSeller(),
-            ),
-
-            CustomSeller(),
-          ],
-        ),
-      ),
+      body: HomeBody(),
     );
   }
 }

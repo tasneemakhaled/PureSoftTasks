@@ -9,7 +9,6 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         title: Text(
           'Fruit Market',
@@ -19,11 +18,19 @@ class SearchView extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [IconButton(onPressed: () {
-          showModalBottomSheet(context: context, builder: (context){
-            return FilterWidget();
-          });
-        }, icon: Icon(Icons.tune))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return FilterWidget();
+                },
+              );
+            },
+            icon: Icon(Icons.tune),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

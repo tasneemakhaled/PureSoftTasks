@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 import 'package:fruit_app/features/home/presentation/views/home_view.dart';
+import 'package:fruit_app/features/home/presentation/views/main_view.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpCodeView extends StatelessWidget {
@@ -64,7 +65,7 @@ class OtpCodeView extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return HomeView();
+                        return MainView();
                       },
                     ),
                   );
