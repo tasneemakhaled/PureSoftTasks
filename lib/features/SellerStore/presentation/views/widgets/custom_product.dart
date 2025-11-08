@@ -16,7 +16,15 @@ class CustomProduct extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset('assets/images/vegetables.png', height: 80, width: 80),
+            ClipRRect(
+              
+              borderRadius: BorderRadiusGeometry.circular(10),
+              child: Image.asset(
+                'assets/images/vegetables.png',
+                height: 80,
+                width: 80,
+              ),
+            ),
             Column(
               children: [
                 Text(
