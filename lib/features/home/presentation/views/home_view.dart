@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/SellerStore/presentation/views/seller_store.dart';
 import 'package:fruit_app/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:fruit_app/features/home/presentation/views/widgets/custom_seller.dart';
 import 'package:fruit_app/features/search/presentation/views/search_view.dart';
@@ -60,7 +61,18 @@ class HomeView extends StatelessWidget {
               ],
             ),
 
-            CustomSeller(),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SellerStore();
+                    },
+                  ),
+                );
+              },
+              child: CustomSeller(),
+            ),
 
             CustomSeller(),
           ],

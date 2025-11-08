@@ -33,7 +33,7 @@ class LoginView extends StatelessWidget {
             ),
             Align(alignment: Alignment.topLeft, child: Text('Phone Number *')),
             SizedBox(height: 5),
-           PhoneInputField(),
+            PhoneInputField(),
             Align(alignment: Alignment.topLeft, child: Text('Password *')),
             SizedBox(height: 5),
             CustomTextFormField(hintText: 'Password'),
@@ -49,7 +49,6 @@ class LoginView extends StatelessWidget {
                       },
                     ),
                   );
-                  
                 },
                 child: Text(
                   'Forget password ?',
@@ -59,10 +58,17 @@ class LoginView extends StatelessWidget {
             ),
             SizedBox(
               width: 300,
-              child: CustomButton(
-                text: 'Login',
-                // buttonColor: pColor,
-                // textColor: Colors.white,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: pColor),
+                onPressed: () {},
+                child: Text(
+                  'Log in',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 20),
