@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/checkout/presentation/views/checkout_error.dart';
+import 'package:fruit_app/features/checkout/presentation/views/checkout_success.dart';
 import 'package:fruit_app/features/checkout/presentation/views/widgets/way_of_payement.dart';
 
 class PaymentWidget extends StatelessWidget {
@@ -106,7 +108,15 @@ class PaymentWidget extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width * (3.5 / 4),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: pColor),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return CheckoutError();
+                  },
+                ),
+              );
+            },
             child: Text('Place Order', style: TextStyle(color: Colors.white)),
           ),
         ),
