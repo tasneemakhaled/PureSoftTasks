@@ -41,7 +41,7 @@ class PaymentWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
         Align(
           alignment: Alignment.topLeft,
           child: Text(
@@ -49,7 +49,7 @@ class PaymentWidget extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -94,7 +94,7 @@ class PaymentWidget extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
         Align(
           alignment: Alignment.topLeft,
           child: Text(

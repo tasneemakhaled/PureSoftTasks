@@ -120,7 +120,7 @@ class _TimeWidgetState extends State<TimeWidget> {
             ],
           ),
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height / 3),
+        SizedBox(height: MediaQuery.sizeOf(context).height / 3.5),
         SizedBox(
           width: MediaQuery.sizeOf(context).width * (3.5 / 4),
           child: ElevatedButton(

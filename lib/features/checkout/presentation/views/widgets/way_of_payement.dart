@@ -163,7 +163,7 @@ class _WayOfPayementState extends State<WayOfPayement> {
             ),
           ),
         ),
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.03),
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
       ],
     );
   }

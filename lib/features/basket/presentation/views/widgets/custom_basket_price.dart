@@ -9,29 +9,102 @@ class CustomBasketPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 8.0,
+      ), // Added horizontal padding
       child: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.start, // Align children to the start
         children: [
-          SizedBox(height: MediaQuery.sizeOf(context).height / 3),
           SizedBox(
-            width: double.infinity, // هنا خلي العرض بطول الشاشة
+            height: MediaQuery.sizeOf(context).height / 20,
+          ), // Reduced spacing
+          SizedBox(
+            width: double.infinity,
             child: const DottedLine(
-              dashColor: Colors.grey, // لون الخط
-              lineThickness: 2, // سمك الخط
-              dashLength: 6, // طول النقطة
-              dashGapLength: 4, // المسافة بين النقاط
-              direction: Axis.horizontal, // أفقي
+              dashColor: Colors.grey,
+              lineThickness: 2,
+              dashLength: 6,
+              dashGapLength: 4,
+              direction: Axis.horizontal,
             ),
           ),
-          Row(children: [Text('Subtotal'), Spacer(), Text('36.00 KD')]),
-          Row(children: [Text('Shipping Charges'), Spacer(), Text('1.50 KD')]),
-          Row(children: [Text('Bag Total'), Spacer(), Text('37.50 KD')]),
+          SizedBox(height: 16), // Added spacing below the dotted line
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(children: [Text('4 items in cart'), Text('37.50 KD')]),
-              Spacer(),
+              Text(
+                'Subtotal',
+                style: TextStyle(fontSize: 16),
+              ), // Added font size
+              Text(
+                '36.00 KD',
+                style: TextStyle(fontSize: 16),
+              ), // Added font size
+            ],
+          ),
+          SizedBox(height: 8), // Added spacing between rows
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Shipping Charges',
+                style: TextStyle(fontSize: 16),
+              ), // Added font size
+              Text(
+                '1.50 KD',
+                style: TextStyle(fontSize: 16),
+              ), // Added font size
+            ],
+          ),
+          SizedBox(height: 8), // Added spacing between rows
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Bag Total',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ), // Bold and font size
+              Text(
+                '37.50 KD',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ), // Bold and font size
+            ],
+          ),
+          SizedBox(height: 24), // Added more spacing before the final row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Align text to the start
+                children: [
+                  Text(
+                    '4 items in cart',
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                  ), // Smaller and grey
+                  Text(
+                    '37.50 KD',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: pColor,
+                    ),
+                  ), // Larger, bold, and primary color
+                ],
+              ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: pColor),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: pColor,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 15,
+                  ), // Increased padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12), // Rounded corners
+                  ),
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -46,6 +119,7 @@ class CustomBasketPrice extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
+                    fontSize: 16, // Added font size
                   ),
                 ),
               ),
