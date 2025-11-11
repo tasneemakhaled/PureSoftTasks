@@ -9,18 +9,17 @@ class InfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        var mediaQueryData = MediaQuery.of(context);
-        return builder(
-          context,
-          DeviceInfo(
-            orientation: mediaQueryData.orientation,
-            screenWidth: mediaQueryData.size.width,
-            screenHeight: mediaQueryData.size.height,
-            deviceType: getDeviceType(mediaQueryData),
-            localWidth: constraints.maxWidth,
-            localHeight: constraints.maxHeight,
-          ),
+        MediaQueryData mediaQueryData = MediaQuery.of(context);
+
+        DeviceInfo deviceInfo = DeviceInfo(
+          orientation: mediaQueryData.orientation,
+          screenWidth: mediaQueryData.size.width,
+          screenHeight: mediaQueryData.size.height,
+          deviceType: getDeviceType(mediaQueryData),
+          localWidth: constraints.maxWidth,
+          localHeight: constraints.maxHeight,
         );
+        return builder(context, deviceInfo);
       },
     );
   }

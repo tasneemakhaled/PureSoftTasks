@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:fruit_app/features/splash/presentation/views/widgets/splash_body.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -27,16 +28,6 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: pColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(height: 50),
-          Image.asset('assets/images/text.png'),
-          Image.asset('assets/images/fruit.png'),
-        ],
-      ),
-    );
+    return Scaffold(backgroundColor: pColor, body: SplashBody());
   }
 }

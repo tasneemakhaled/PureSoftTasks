@@ -9,7 +9,7 @@ MyDeviceType getDeviceType(MediaQueryData) {
   if (orientation == Orientation.landscape) {
     width = MediaQueryData.size.height;
   } else {
-    width = MediaQueryData.sizw.width;
+    width = MediaQueryData.size.width;
   }
   if (width >= 950) {
     return MyDeviceType.desktop;
