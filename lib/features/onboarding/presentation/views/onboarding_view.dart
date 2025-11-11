@@ -1,125 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/authentication/presentation/views/welcome_view.dart';
-import 'package:fruit_app/features/onboarding/presentation/view_models/onboarding_model.dart';
 
-class OnboardingView extends StatefulWidget {
+import 'package:fruit_app/features/onboarding/presentation/views/widgets/onboarding_view_body.dart';
+
+class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
 
   @override
-  State<OnboardingView> createState() => _OnboardingViewState();
-}
-
-class _OnboardingViewState extends State<OnboardingView> {
-  int onChangedIndex = 0;
-
-  PageController controller = PageController();
-
-  final List<OnboardingModel> pages = [
-    OnboardingModel(
-      image: 'assets/images/onboarding.png',
-      title: 'E Shopping',
-      subTitle: 'Explore top organic fruits & grab them',
-    ),
-    OnboardingModel(
-      image: 'assets/images/onboarding.png',
-      title: 'Best Quality',
-      subTitle: 'We ensure the best quality fruits for you',
-    ),
-    OnboardingModel(
-      image: 'assets/images/onboarding.png',
-      title: 'Fast Delivery',
-      subTitle: 'Order is arrived at your place',
-    ),
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Skip',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: PageView.builder(
-                onPageChanged: (index) {
-                  onChangedIndex = index;
-                  setState(() {});
-                },
-                controller: controller,
-                itemCount: pages.length,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Image.asset(pages[index].image),
-                      Text(pages[index].title),
-                      Text(pages[index].subTitle),
-                      SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(pages.length, (index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: onChangedIndex == index ? 20 : 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                color: onChangedIndex == index
-                                    ? pColor
-                                    : Colors.grey,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: pColor,
-                        ),
-                        onPressed: () {
-                          if (onChangedIndex < 2) {
-                            controller.nextPage(
-                              duration: Duration(microseconds: 2),
-                              curve: Curves.bounceInOut,
-                            );
-                          } else {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return WelcomeView();
-                                },
-                              ),
-                            );
-                          }
-                        },
-                        child: Text(
-                          onChangedIndex <= 1 ? 'Next' : 'Get Started',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    return SafeArea(child: Scaffold(body: OnboardingViewBody()));
   }
 }
 

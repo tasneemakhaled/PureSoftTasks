@@ -9,13 +9,12 @@ class SplashBody extends StatelessWidget {
     return InfoWidget(
       builder: (context, deviceInfo) {
         double height = deviceInfo.localHeight;
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(height: height * 0.1),
-            Image.asset('assets/images/text.png'),
-            Image.asset('assets/images/fruit.png'),
-          ],
+        double width = deviceInfo.localWidth;
+
+        return SizedBox(
+          height: height,
+          width: width,
+          child: Image.asset('assets/images/splash.png', fit: BoxFit.fill),
         );
       },
     );
