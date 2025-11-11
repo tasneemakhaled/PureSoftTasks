@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/utils/enums/device_type.dart';
 
-DeviceType getDeviceType(MediaQueryData) {
+// ignore: avoid_types_as_parameter_names, non_constant_identifier_names
+MyDeviceType getDeviceType(MediaQueryData) {
   Orientation orientation = MediaQueryData.orientation;
   double width = 0;
   if (orientation == Orientation.landscape) {
@@ -10,10 +12,10 @@ DeviceType getDeviceType(MediaQueryData) {
     width = MediaQueryData.sizw.width;
   }
   if (width >= 950) {
-    return DeviceType.desktop;
+    return MyDeviceType.desktop;
   } else if (width >= 60) {
-    return DeviceType.tablet;
+    return MyDeviceType.tablet;
   } else {
-    return DeviceType.phone;
+    return MyDeviceType.mobile;
   }
 }
