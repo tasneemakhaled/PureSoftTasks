@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/orders/presentation/views/order_tracking_view.dart';
 
 class CheckoutSuccess extends StatelessWidget {
   const CheckoutSuccess({super.key});
@@ -51,7 +52,15 @@ class CheckoutSuccess extends StatelessWidget {
                 backgroundColor: Colors.white,
                 side: BorderSide(color: Colors.black),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return OrderTrackingView();
+                    },
+                  ),
+                );
+              },
               child: Text('Track Order', style: TextStyle(color: pColor)),
             ),
           ),
