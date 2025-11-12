@@ -4,6 +4,7 @@ import 'package:timeline_tile/timeline_tile.dart';
 
 class OrderTrackingView extends StatelessWidget {
   const OrderTrackingView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -231,26 +232,33 @@ class OrderTrackingView extends StatelessWidget {
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (context, setState) {
-            return AlertDialog(
+            return Dialog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              title: const Text(
-                'Cancel Order',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              content: SingleChildScrollView(
+              insetPadding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 340),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text(
+                      'Cancel Order',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
                     Text(
                       'Reason',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey[300]!),
                         borderRadius: BorderRadius.circular(8),
@@ -258,8 +266,15 @@ class OrderTrackingView extends StatelessWidget {
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
                           isExpanded: true,
-                          hint: const Text('Please select reason'),
+                          hint: const Text(
+                            'Please select reason',
+                            style: TextStyle(fontSize: 13),
+                          ),
                           value: selectedReason,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                          ),
                           items:
                               [
                                 'Changed my mind',
@@ -280,16 +295,21 @@ class OrderTrackingView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 14),
                     Text(
                       'Notes',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     TextField(
                       controller: notesController,
-                      maxLines: 3,
+                      maxLines: 2,
+                      style: const TextStyle(fontSize: 13),
                       decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 8,
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide(color: Colors.grey[300]!),
@@ -304,14 +324,10 @@ class OrderTrackingView extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              actions: [
-                Column(
-                  children: [
+                    const SizedBox(height: 18),
                     SizedBox(
                       width: double.infinity,
+                      height: 44,
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).pop();
@@ -325,26 +341,27 @@ class OrderTrackingView extends StatelessWidget {
                         ),
                         child: const Text(
                           'Confirm Cancelation',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       ),
                     ),
                     const SizedBox(height: 8),
                     SizedBox(
                       width: double.infinity,
+                      height: 40,
                       child: TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                         child: const Text(
                           'Close',
-                          style: TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                       ),
                     ),
                   ],
                 ),
-              ],
+              ),
             );
           },
         );
