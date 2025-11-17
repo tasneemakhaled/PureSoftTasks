@@ -16,11 +16,13 @@ class BasketView extends StatelessWidget {
           style: TextStyle(color: pColor, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Column(
-        children: [
-          Column(children: [CustomBasketCard(), CustomBasketCard()]),
-          CustomBasketPrice(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Column(children: [CustomBasketCard(), CustomBasketCard()]),
+            CustomBasketPrice(),
+          ],
+        ),
       ),
     );
   }

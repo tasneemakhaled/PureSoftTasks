@@ -29,11 +29,11 @@ class _MainViewState extends State<MainView> {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          currentIndex = index;
-          setState(() {});
-        },
+        // currentIndex: currentIndex,
+        // onTap: (index) {
+        //   currentIndex = index;
+        //   setState(() {});
+        // },
       ),
     );
   }

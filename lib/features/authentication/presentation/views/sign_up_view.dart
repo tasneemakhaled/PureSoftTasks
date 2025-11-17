@@ -13,85 +13,88 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            Center(
-              child: Text(
-                'Fruit Market',
-                style: TextStyle(
-                  color: pColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              Center(
+                child: Text(
+                  'Fruit Market',
+                  style: TextStyle(
+                    color: pColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 15),
-            Text(
-              'Sign Up To Wikala',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-            ),
-            Align(alignment: Alignment.topLeft, child: Text('Full Name *')),
-            CustomTextFormField(hintText: 'First and Last Name'),
-            SizedBox(height: 5),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text('Phone Number with Whatsapp *'),
-            ),
-            SizedBox(height: 5),
-            PhoneInputField(),
-            Align(alignment: Alignment.topLeft, child: Text('Password *')),
-            SizedBox(height: 5),
-            CustomTextFormField(hintText: 'Password'),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 300,
-              child: CustomButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MainView();
-                      },
-                    ),
-                  );
-                },
-                text: 'Sign UP',
-                buttonColor: pColor,
-                textColor: Colors.white,
+              SizedBox(height: 15),
+              Text(
+                'Sign Up To Wikala',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account ?',
-                  style: TextStyle(fontSize: 16),
-                ),
-                TextButton(
+              Align(alignment: Alignment.topLeft, child: Text('Full Name *')),
+              CustomTextFormField(hintText: 'First and Last Name'),
+              SizedBox(height: 5),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text('Phone Number with Whatsapp *'),
+              ),
+              SizedBox(height: 5),
+              PhoneInputField(),
+              Align(alignment: Alignment.topLeft, child: Text('Password *')),
+              SizedBox(height: 5),
+              CustomTextFormField(hintText: 'Password'),
+              SizedBox(height: 10),
+              SizedBox(
+                width: 300,
+                child: CustomButton(
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginView();
+                          return MainView();
                         },
                       ),
                     );
                   },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontSize: 16,
+                  text: 'Sign Up',
+                  buttonColor: pColor,
+                  textColor: Colors.white,
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an account ?',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginView();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

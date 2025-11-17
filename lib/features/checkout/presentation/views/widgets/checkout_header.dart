@@ -19,112 +19,121 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
   bool isPaymentSelected = false;
   Widget? selectedWidget;
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            InkWell(
-              onTap: () {
-                isTimeSelected = !isTimeSelected;
+  void initState() {
+    super.initState();
+    isTimeSelected = true; // تشيك على أول دايرة
+    selectedWidget = TimeWidget(); // يعرض الويجت بتاعها
+  }
 
-                selectedWidget = TimeWidget();
-                isPaymentSelected = false;
-                isAddressSelected = false;
-                setState(() {});
-              },
-              child: Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey, width: 2),
-                ),
-                child: Center(
-                  child: Container(
-                    width: isTimeSelected ? 8 : 0,
-                    height: isTimeSelected ? 8 : 0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black,
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () {
+                  isTimeSelected = !isTimeSelected;
+
+                  selectedWidget = TimeWidget();
+                  isPaymentSelected = false;
+                  isAddressSelected = false;
+                  setState(() {});
+                },
+                child: Container(
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey, width: 2),
+                  ),
+                  child: Center(
+                    child: Container(
+                      width: isTimeSelected ? 8 : 0,
+                      height: isTimeSelected ? 8 : 0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            DottedLine(
-              dashColor: Colors.grey,
-              dashGapLength: 3,
-              dashLength: 8,
-              lineLength: 130,
-              direction: Axis.horizontal,
-            ),
-            InkWell(
-              onTap: () {
-                isAddressSelected = !isAddressSelected;
-                selectedWidget = AddressWidget();
-                isTimeSelected = false;
-                isPaymentSelected = false;
-                setState(() {});
-              },
-              child: Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey, width: 2),
-                ),
-                child: Center(
-                  child: Container(
-                    width: isAddressSelected ? 8 : 0,
-                    height: isAddressSelected ? 8 : 0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black,
+              DottedLine(
+                dashColor: Colors.grey,
+                dashGapLength: 3,
+                dashLength: 8,
+                lineLength: 130,
+                direction: Axis.horizontal,
+              ),
+              InkWell(
+                onTap: () {
+                  isAddressSelected = !isAddressSelected;
+                  selectedWidget = AddressWidget();
+                  isTimeSelected = false;
+                  isPaymentSelected = false;
+                  setState(() {});
+                },
+                child: Container(
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey, width: 2),
+                  ),
+                  child: Center(
+                    child: Container(
+                      width: isAddressSelected ? 8 : 0,
+                      height: isAddressSelected ? 8 : 0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            DottedLine(
-              dashColor: Colors.grey,
-              dashGapLength: 3,
-              dashLength: 8,
-              lineLength: 130,
-              direction: Axis.horizontal,
-            ),
-            InkWell(
-              onTap: () {
-                isPaymentSelected = !isPaymentSelected;
-                selectedWidget = PaymentWidget();
-                isAddressSelected = false;
-                isTimeSelected = false;
-                setState(() {});
-              },
-              child: Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.grey, width: 2),
-                ),
-                child: Center(
-                  child: Container(
-                    width: isPaymentSelected ? 8 : 0,
-                    height: isPaymentSelected ? 8 : 0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black,
+              DottedLine(
+                dashColor: Colors.grey,
+                dashGapLength: 3,
+                dashLength: 8,
+                lineLength: 130,
+                direction: Axis.horizontal,
+              ),
+              InkWell(
+                onTap: () {
+                  isPaymentSelected = !isPaymentSelected;
+                  selectedWidget = PaymentWidget();
+                  isAddressSelected = false;
+                  isTimeSelected = false;
+                  setState(() {});
+                },
+                child: Container(
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey, width: 2),
+                  ),
+                  child: Center(
+                    child: Container(
+                      width: isPaymentSelected ? 8 : 0,
+                      height: isPaymentSelected ? 8 : 0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-        selectedWidget ?? SizedBox(),
-      ],
+            ],
+          ),
+          selectedWidget ?? SizedBox(),
+        ],
+      ),
     );
   }
 }

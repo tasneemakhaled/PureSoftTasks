@@ -45,7 +45,15 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return WelcomeView();
+                      },
+                    ),
+                  );
+                },
                 child: Text(
                   'Skip',
                   style: TextStyle(
