@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/favourite/presentation/views/favourite_view.dart';
-import 'package:fruit_app/features/orders/presentation/views/orders_view.dart';
+
 import 'package:fruit_app/features/setting/presentation/views/contact_view.dart';
 import 'package:fruit_app/features/setting/presentation/views/profile_view.dart';
 import 'package:fruit_app/features/setting/presentation/views/terms_and_conditions.dart';

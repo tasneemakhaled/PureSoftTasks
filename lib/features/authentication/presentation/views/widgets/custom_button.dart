@@ -1,51 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_app/core/utils/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    this.prefixIcon,
-    required this.text,
-    this.textColor,
-    this.onPressed,
     this.buttonColor,
+    this.prefixIcon,
+    this.onPressed,
+    this.text,
+    this.textColor,
+    this.hasBorder = true,
   });
 
-  final Icon? prefixIcon;
-  final String text;
-  final Color? textColor;
-  final void Function()? onPressed;
   final Color? buttonColor;
-
+  final Widget? prefixIcon;
+  final VoidCallback? onPressed;
+  final String? text;
+  final Color? textColor;
+  final bool hasBorder;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50, // تحديد ارتفاع ثابت
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor ?? pColor,
-          foregroundColor: textColor ?? Colors.white,
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: buttonColor,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: hasBorder
+              ? BorderSide(color: Color(0xFFE6E9EA), width: 1)
+              : BorderSide.none,
         ),
-        onPressed: onPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (prefixIcon != null) ...[prefixIcon!, SizedBox(width: 8)],
-            Flexible(
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: 14, // تصغير حجم الخط
-                ),
-                overflow: TextOverflow.ellipsis, // قص النص إذا كان طويلاً
-                maxLines: 1,
-              ),
-            ),
+        padding: EdgeInsets.zero,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (prefixIcon != null) ...[
+            SizedBox(width: 22, height: 22, child: prefixIcon),
+            SizedBox(width: 12),
           ],
-        ),
+          Text(
+            text!,
+            style: TextStyle(color: textColor, fontSize: 13),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }

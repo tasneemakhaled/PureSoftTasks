@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/core/utils/widgets/info_widget.dart';
+import 'package:fruit_app/features/authentication/presentation/views/login_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 
 class WelcomeViewBody extends StatelessWidget {
@@ -21,8 +22,10 @@ class WelcomeViewBody extends StatelessWidget {
         double subtitleSize = isLandscape ? width * 0.04 : width * 0.05;
         double textSize = isLandscape ? width * 0.03 : width * 0.042;
         double iconSize = isLandscape ? 18.0 : 20.0;
-        double buttonWidth = isLandscape ? width * 0.65 : width * 0.88;
-        double buttonHeight = isLandscape ? height * 0.12 : height * 0.065;
+
+        // أبعاد الـ Buttons حسب الفيجما (347 × 51)
+        double buttonWidth = width * 0.8; // تقريباً 88% من العرض
+        double buttonHeight = height * 0.065; // تقريباً 6.5% من الارتفاع
 
         return SizedBox(
           height: deviceInfo.screenHeight,
@@ -49,7 +52,7 @@ class WelcomeViewBody extends StatelessWidget {
               ),
               SizedBox(height: isLandscape ? height * 0.02 : height * 0.035),
 
-              // Buttons Section
+              // Buttons Section - نفس أبعاد الفيجما
               SizedBox(
                 width: buttonWidth,
                 height: buttonHeight,
@@ -57,28 +60,24 @@ class WelcomeViewBody extends StatelessWidget {
                   buttonColor: Colors.white,
                   prefixIcon: Icon(
                     Icons.phone,
-                    color: Colors.black,
-                    size: iconSize,
+                    color: Color(0xff656665),
+                    size: 20,
                   ),
                   onPressed: () {},
                   text: 'Sign in with Phone Number',
-                  textColor: Colors.black,
+                  textColor: Color(0xff242729),
                 ),
               ),
-              SizedBox(height: isLandscape ? height * 0.01 : height * 0.015),
+              SizedBox(height: height * 0.015),
               SizedBox(
                 width: buttonWidth,
                 height: buttonHeight,
                 child: CustomButton(
                   buttonColor: Colors.white,
                   onPressed: () {},
-                  prefixIcon: Icon(
-                    FontAwesomeIcons.google,
-                    color: Colors.black,
-                    size: iconSize,
-                  ),
+                  prefixIcon: Image.asset('assets/images/google.png'),
                   text: 'Sign in with Google',
-                  textColor: Colors.black,
+                  textColor: Color(0xff242729),
                 ),
               ),
               SizedBox(height: height * 0.015),
@@ -87,9 +86,9 @@ class WelcomeViewBody extends StatelessWidget {
                 height: buttonHeight,
                 child: CustomButton(
                   onPressed: () {},
-                  buttonColor: Color(0xff1877F2),
+                  buttonColor: Color(0xff235C95),
                   prefixIcon: Icon(
-                    FontAwesomeIcons.facebookF,
+                    FontAwesomeIcons.facebook,
                     color: Colors.white,
                     size: iconSize,
                   ),
@@ -108,12 +107,20 @@ class WelcomeViewBody extends StatelessWidget {
                     style: TextStyle(fontSize: textSize, color: Colors.black87),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LoginView();
+                          },
+                        ),
+                      );
+                    },
                     child: Text(
                       'Sign in',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
-                        color: Color(0xff1877F2),
+                        color: Color(0xff004D8E),
                         fontSize: textSize,
                         fontWeight: FontWeight.w500,
                       ),
@@ -139,7 +146,7 @@ class WelcomeViewBody extends StatelessWidget {
                       TextSpan(
                         text: 'Terms of service',
                         style: TextStyle(
-                          color: Color(0xff1877F2),
+                          color: Color(0xff005B96),
                           fontSize: textSize * 0.9,
                           height: 1.4,
                         ),
@@ -155,7 +162,7 @@ class WelcomeViewBody extends StatelessWidget {
                       TextSpan(
                         text: 'Privacy policy',
                         style: TextStyle(
-                          color: Color(0xff1877F2),
+                          color: Color(0xff005B96),
                           fontSize: textSize * 0.9,
                           height: 1.4,
                         ),

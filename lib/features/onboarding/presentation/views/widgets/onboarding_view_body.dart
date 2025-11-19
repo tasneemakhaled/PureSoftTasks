@@ -54,16 +54,27 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                     ),
                   );
                 },
-                child: Text(
-                  'Skip',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    decoration: TextDecoration.underline,
-                  ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      onChangedIndex <= 1 ? 'Skip' : '',
+                      style: TextStyle(color: Color(0xff656565)),
+                    ),
+                    SizedBox(height: 3),
+                    onChangedIndex <= 1
+                        ? Container(
+                            width: 25,
+                            height: 1.5,
+                            color: Color(0xff656565),
+                          )
+                        : Container(),
+                  ],
                 ),
               ),
             ),
-            Expanded(
+            SizedBox(
+              height: height / 2,
               child: PageView.builder(
                 onPageChanged: (index) {
                   onChangedIndex = index;
@@ -86,7 +97,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                       Text(
                         pages[index].title,
                         style: TextStyle(
-                          fontSize: width * 0.03, // Responsive font size
+                          fontSize: width * 0.04, // Responsive font size
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -97,94 +108,71 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         pages[index].subTitle,
                         textAlign: TextAlign.center, // Center align subtitle
                         style: TextStyle(
-                          fontSize: width * 0.035, // Responsive font size
+                          fontSize: width * 0.04, // Responsive font size
                           color: Colors.grey,
                         ),
                       ),
-                      SizedBox(
-                        height: height * 0.035,
-                      ), // Increased space before dots
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(pages.length, (index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.01,
-                            ), // Horizontal padding
-                            child: AnimatedContainer(
-                              // Use AnimatedContainer for smooth transition
-                              duration: const Duration(milliseconds: 300),
-                              width: onChangedIndex == index
-                                  ? width *
-                                        0.02 // Slightly larger for selected dot
-                                  : width * 0.01,
-                              height:
-                                  height * 0.01, // Slightly larger dot height
-
-                              decoration: BoxDecoration(
-                                color: onChangedIndex == index
-                                    ? pColor
-                                    : Colors.grey,
-                                borderRadius: BorderRadius.circular(
-                                  height * 0.01,
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                      SizedBox(
-                        height: height * 0.05,
-                      ), // Increased space before button
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: pColor,
-                          padding: EdgeInsets.symmetric(
-                            horizontal:
-                                width * 0.15, // Responsive button padding
-                            vertical: height * 0.02,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              height * 0.01,
-                            ), // Rounded corners for button
-                          ),
-                        ),
-                        onPressed: () {
-                          if (onChangedIndex < pages.length - 1) {
-                            // Check against pages.length - 1
-                            controller.nextPage(
-                              duration: Duration(
-                                milliseconds: 300,
-                              ), // Smoother animation
-                              curve: Curves.easeIn, // Smoother curve
-                            );
-                          } else {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return WelcomeView();
-                                },
-                              ),
-                            );
-                          }
-                        },
-                        child: Text(
-                          onChangedIndex < pages.length - 1
-                              ? 'Next'
-                              : 'Get Started', // Dynamic button text
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize:
-                                width * 0.035, // Responsive button text size
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                      SizedBox(height: height * 0.035),
                     ],
                   );
                 },
+              ),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(pages.length, (index) {
+                bool isActive = onChangedIndex == index;
+
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: 8, // active = أطول شويه
+                  height: 8, // كلهم نفس الارتفاع
+                  decoration: BoxDecoration(
+                    color: isActive ? pColor : Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(10), // دائري مظبوط
+                  ),
+                );
+              }),
+            ),
+
+            SizedBox(height: height * 0.08), // Increased space before button
+            SizedBox(
+              height: height * 0.07, // 7% من ارتفاع الـ container
+              width: width * 0.4, // 85% من عرض الـ container
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: pColor,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: width * 0.08,
+                    vertical: height * 0.015,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+                onPressed: () {
+                  if (onChangedIndex < pages.length - 1) {
+                    controller.nextPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeIn,
+                    );
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => WelcomeView()),
+                    );
+                  }
+                },
+                child: Text(
+                  onChangedIndex < pages.length - 1 ? 'Next' : 'Get Started',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: width * 0.04, // حجم خط مناسب
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
             ),
           ],
