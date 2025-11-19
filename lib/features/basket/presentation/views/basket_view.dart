@@ -11,6 +11,7 @@ class BasketView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
@@ -21,7 +22,16 @@ class BasketView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Column(children: [CustomBasketCard(), CustomBasketCard()]),
+            SingleChildScrollView(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return CustomBasketCard();
+                },
+              ),
+            ),
             CustomBasketPrice(),
           ],
         ),

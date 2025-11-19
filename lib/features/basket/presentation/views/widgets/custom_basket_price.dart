@@ -94,32 +94,35 @@ class CustomBasketPrice extends StatelessWidget {
                   ), // Larger, bold, and primary color
                 ],
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: pColor,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 15,
-                  ), // Increased padding
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12), // Rounded corners
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return CheckoutView();
-                      },
+              SizedBox(
+                width: 181,
+                height: 37,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: pColor,
+
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        15,
+                      ), // Rounded corners
                     ),
-                  );
-                },
-                child: Text(
-                  'Proceed to checkout',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16, // Added font size
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return CheckoutView();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Proceed to checkout',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      // Added font size
+                    ),
                   ),
                 ),
               ),
