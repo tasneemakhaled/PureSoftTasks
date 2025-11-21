@@ -26,12 +26,26 @@ class SettingView extends StatelessWidget {
         child: Column(
           children: [
             Center(
-              child: Icon(
-                Icons.account_circle,
-                color: Colors.grey.shade300,
-                size: 90,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Color(0xff9EA4AE), // نفس لون الدائرة في الصورة
+                    width: 2,
+                  ),
+                ),
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/Icon feather-user.png',
+                    height: 45,
+                    width: 45,
+                  ),
+                ),
               ),
             ),
+
             Text('Welcome, Fruit Market', style: TextStyle(fontSize: 24)),
             ListTile(
               onTap: () {

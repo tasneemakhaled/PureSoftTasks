@@ -139,7 +139,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
             SizedBox(height: height * 0.08), // Increased space before button
             SizedBox(
-              height: height * 0.07, // 7% من ارتفاع الـ container
+              height: height * 0.06, // 7% من ارتفاع الـ container
               width: width * 0.4, // 85% من عرض الـ container
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -149,7 +149,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                     vertical: height * 0.015,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(25),
                   ),
                 ),
                 onPressed: () {

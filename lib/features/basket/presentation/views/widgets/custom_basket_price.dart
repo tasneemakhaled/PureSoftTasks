@@ -95,8 +95,8 @@ class CustomBasketPrice extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                width: 181,
-                height: 37,
+                width: 185,
+                height: 45,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: pColor,
