@@ -74,7 +74,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               ),
             ),
             SizedBox(
-              height: height / 2,
+              height: height / 1.5,
               child: PageView.builder(
                 onPageChanged: (index) {
                   onChangedIndex = index;

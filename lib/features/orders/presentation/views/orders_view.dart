@@ -9,6 +9,7 @@ class OrdersView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        forceMaterialTransparency: true,
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,

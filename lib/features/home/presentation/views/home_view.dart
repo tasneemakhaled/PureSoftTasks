@@ -14,6 +14,7 @@ class HomeView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          forceMaterialTransparency: true,
           backgroundColor: Colors.white,
           actions: [
             IconButton(

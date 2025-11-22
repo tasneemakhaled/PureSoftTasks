@@ -11,71 +11,67 @@ class _LanguageDialogState extends State<LanguageDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor:
-          Colors.transparent, // Make the dialog background transparent
-      elevation: 0, // Remove default shadow
-      child: Material(
-        // Wrap content in Material to control its background color
-        color: Colors.white, // Explicitly set background to white
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Select Language', // Added title as in Figma (implied)
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
+      backgroundColor: Colors.white, // إضافة الخلفية البيضاء
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20), // حواف مستديرة زي الفيجما
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Select Language',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
                 ),
-                SizedBox(height: 20),
-                _buildLanguageOption('العربية', '🇸🇦', 'Arabic'),
-                SizedBox(height: 12),
-                _buildLanguageOption('English', '🇺🇸', 'English'),
-                SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context, selectedLanguage);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF2D5F3F), // Primary green color
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      elevation: 0, // No shadow for flat look
-                    ),
-                    child: Text(
-                      'Apply',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 12),
-                TextButton(
+              ),
+              SizedBox(height: 8),
+              _buildLanguageOption('العربية', '🇸🇦', 'Arabic'),
+              SizedBox(height: 8),
+              _buildLanguageOption('English', '🇺🇸', 'English'),
+              SizedBox(height: 8),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, selectedLanguage);
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF2D5F3F), // Primary green color
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 0, // No shadow for flat look
+                  ),
                   child: Text(
-                    'Close',
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                    'Apply',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 8),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Close',
+                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -95,14 +91,11 @@ class _LanguageDialogState extends State<LanguageDialog> {
         decoration: BoxDecoration(
           color: isSelected
               ? Color(0xFFE6F0E9)
-              : Colors
-                    .white, // Light green background when selected, white otherwise
+              : Colors.white, // Light green background when selected
           border: Border.all(
             color: isSelected
                 ? Color(0xFF2D5F3F)
-                : Colors
-                      .grey
-                      .shade300, // Green border when selected, light grey otherwise
+                : Colors.grey.shade300, // Green border when selected
             width: isSelected ? 1.5 : 1,
           ),
           borderRadius: BorderRadius.circular(30),
@@ -131,7 +124,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
                     )
                   : null,
             ),
-            SizedBox(width: 12),
+            SizedBox(width: 8),
             Text(flag, style: TextStyle(fontSize: 24)),
             SizedBox(width: 8),
             Text(

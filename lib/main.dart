@@ -1,8 +1,9 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_app/features/splash/presentation/views/splash_view.dart';
 
 void main() {
-  runApp(const FruitApp());
+  runApp(DevicePreview(builder: (context) => FruitApp()));
 }
 
 class FruitApp extends StatelessWidget {
@@ -11,8 +12,7 @@ class FruitApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
-      // builder: DevicePreview.appBuilder,
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       home: SplashView(),
     );

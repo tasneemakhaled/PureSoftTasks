@@ -9,6 +9,7 @@ class FavouriteView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+         forceMaterialTransparency: true,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
@@ -16,68 +17,183 @@ class FavouriteView extends StatelessWidget {
           style: TextStyle(color: pColor, fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView.builder(
-        itemCount: 2,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                border: Border.all(color: Colors.grey.shade200),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(10),
-                      child: Image.asset(
-                        'assets/images/vegetables.png',
-                        height: 80,
-                        width: 80,
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          'Product name',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Text(' 1200 KD  '),
-                            Text(
-                              '1400 KD',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                decoration: TextDecoration.lineThrough,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Store Name : Store 1',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Icon(Icons.cancel, color: Colors.grey.shade300),
-                  ],
-                ),
-              ),
-            ),
-          );
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return orientation == Orientation.portrait
+              ? ListView.builder(
+                  padding: EdgeInsets.all(8),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return _buildFavouriteCard(isPortrait: true);
+                  },
+                )
+              : GridView.builder(
+                  padding: EdgeInsets.all(8),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.85,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return _buildFavouriteCard(isPortrait: false);
+                  },
+                );
         },
       ),
     );
+  }
+
+  Widget _buildFavouriteCard({required bool isPortrait}) {
+    if (isPortrait) {
+      // تصميم ListView
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            border: Border.all(color: Colors.grey.shade200),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/images/vegetables.png',
+                    height: 80,
+                    width: 80,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Product name',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Text(
+                            '1200 KD  ',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            '1400 KD',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        'Store Name : Store 1',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(Icons.cancel, color: Colors.grey.shade300, size: 24),
+              ],
+            ),
+          ),
+        ),
+      );
+    } else {
+      // تصميم GridView
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+          border: Border.all(color: Colors.grey.shade200),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // الصورة
+              Container(
+                height: 100,
+                width: 100,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/images/vegetables.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              // اسم المنتج
+              Text(
+                'Product name',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 6),
+              // الأسعار
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '1200 KD  ',
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    '1400 KD',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      decoration: TextDecoration.lineThrough,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 6),
+              // اسم المتجر
+              Text(
+                'Store 1',
+                style: TextStyle(fontSize: 13, color: Colors.grey.shade600),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              SizedBox(height: 8),
+              // أيقونة الحذف
+              Align(
+                alignment: Alignment.centerRight,
+                child: Icon(
+                  Icons.cancel,
+                  color: Colors.grey.shade300,
+                  size: 22,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
   }
 }

@@ -10,7 +10,7 @@ class CustomBasketPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
+        horizontal: 8.0,
         vertical: 8.0,
       ), // Added horizontal padding
       child: Column(
@@ -94,28 +94,24 @@ class CustomBasketPrice extends StatelessWidget {
                   ), // Larger, bold, and primary color
                 ],
               ),
-              SizedBox(
-                width: 185,
-                height: 45,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: pColor,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: pColor,
 
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
-                      ), // Rounded corners
-                    ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15), // Rounded corners
                   ),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return CheckoutView();
-                        },
-                      ),
-                    );
-                  },
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return CheckoutView();
+                      },
+                    ),
+                  );
+                },
+                child: Center(
                   child: Text(
                     'Proceed to checkout',
                     style: TextStyle(

@@ -15,6 +15,7 @@ class WelcomeView extends StatelessWidget {
         backgroundColor: Colors.white,
 
         appBar: AppBar(
+          forceMaterialTransparency: true,
           backgroundColor: Colors.white,
           leading: IconButton(
             icon: Icon(Icons.close, color: Colors.black),

@@ -85,12 +85,9 @@ class SettingView extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             ListTile(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LanguageDialog();
-                    },
-                  ),
+                showDialog(
+                  context: context,
+                  builder: (context) => LanguageDialog(),
                 );
               },
               minTileHeight: 30,
