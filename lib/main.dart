@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/services/local_notification_service.dart';
+import 'package:fruit_app/core/services/push_notification_service.dart';
 
 import 'package:fruit_app/features/splash/presentation/views/splash_view.dart';
 import 'package:fruit_app/firebase_options.dart';
@@ -9,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await LocalNotificationService.init();
-
+  PushNotificationService.initalize();
   runApp(FruitApp());
 }
 

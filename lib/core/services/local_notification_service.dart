@@ -4,23 +4,22 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class LocalNotificationService {
   static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
-
-  // هذه الدالة تعمل عند الضغط على الإشعار
-  static void onTap(NotificationResponse notificationResponse) {
-    print("Notification Tapped: ${notificationResponse.payload}");
+  static StreamController<NotificationResponse> streamController =
+      StreamController();
+  static onTap(NotificationResponse notificationResponse) {
+    // log(notificationResponse.id!.toString());
+    // log(notificationResponse.payload!.toString());
+    streamController.add(notificationResponse);
+    // Navigator.push(context, route);
   }
 
   static Future<void> init() async {
-    // 1. إعدادات الأندرويد
-    // تأكد أن أيقونة @mipmap/ic_launcher موجودة في مجلد android/app/src/main/res/
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    // 2. إعدادات iOS
     const DarwinInitializationSettings initializationSettingsDarwin =
         DarwinInitializationSettings();
 
-    // 3. تجميع الإعدادات
     const InitializationSettings initializationSettings =
         InitializationSettings(
           android: initializationSettingsAndroid,
@@ -45,7 +44,7 @@ class LocalNotificationService {
   }
 
   // Basic Notification
-  static Future<void> showNotification() async {
+  static Future<void> showLocalNotification() async {
     const AndroidNotificationDetails
     androidNotificationDetails = AndroidNotificationDetails(
       'channel_id_1', // id: لازم يكون فريد وثابت للقناة دي
@@ -61,9 +60,35 @@ class LocalNotificationService {
     );
 
     await flutterLocalNotificationsPlugin.show(
-      0, // id للإشعار نفسه
-      'Local Notification', // العنوان
-      'Welcome to our app', // المحتوى
+      0,
+      'Local Notification',
+      'Welcome to our app',
+      notificationDetails,
+    );
+  }
+
+  static Future<void> showForeGroundNotification(
+    String? title,
+    String? body,
+  ) async {
+    const AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails(
+          'channel_id_1',
+          'Basic Notifications',
+          channelDescription: 'This channel is for basic notifications',
+          importance: Importance.max,
+          priority: Priority.high,
+          showWhen: true,
+        );
+
+    const NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+    );
+
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      title,
+      body,
       notificationDetails,
     );
   }

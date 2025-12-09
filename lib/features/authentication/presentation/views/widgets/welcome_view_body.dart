@@ -65,7 +65,7 @@ class WelcomeViewBody extends StatelessWidget {
                     size: 20,
                   ),
                   onPressed: () {
-                    LocalNotificationService.showNotification();
+                    LocalNotificationService.showLocalNotification();
                   },
                   text: 'Sign in with Phone Number',
                   textColor: Color(0xff242729),
