@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_app/core/services/local_notification_service.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/core/utils/widgets/info_widget.dart';
 import 'package:fruit_app/features/authentication/presentation/views/login_view.dart';
@@ -63,7 +64,9 @@ class WelcomeViewBody extends StatelessWidget {
                     color: Color(0xff656665),
                     size: 20,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    LocalNotificationService.showNotification();
+                  },
                   text: 'Sign in with Phone Number',
                   textColor: Color(0xff242729),
                 ),
