@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocalNotificationService {
@@ -7,7 +8,7 @@ class LocalNotificationService {
   static StreamController<NotificationResponse> streamController =
       StreamController();
   static onTap(NotificationResponse notificationResponse) {
-    // log(notificationResponse.id!.toString());
+    log(notificationResponse.id!.toString());
     // log(notificationResponse.payload!.toString());
     streamController.add(notificationResponse);
     // Navigator.push(context, route);
@@ -33,9 +34,6 @@ class LocalNotificationService {
       onDidReceiveBackgroundNotificationResponse: onTap,
     );
 
-    // ==================================================
-    // 5. طلب الإذن (خطوة ضرورية جداً لأندرويد 13+)
-    // ==================================================
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin
